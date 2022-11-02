@@ -137,8 +137,9 @@ private Panel createSouthPanel(){
 		stop.setFont(font);
 		pause.setFont(font);
 		
+		//화면에 버튼 추가 
 		Panel btnPanel = new Panel(new FlowLayout(FlowLayout.CENTER, 20, 20));
-		btnPanel.add(start);
+		btnPanel.add(start);	
 		btnPanel.add(pause);
 		btnPanel.add(stop);
 		
@@ -149,12 +150,12 @@ private Panel createSouthPanel(){
 		}
 		
 		private void start(){
-		if(timeTh == null || !timeTh.isAlive()){
-		if(time != 0) preTime = System.currentTimeMillis() - time;
-		else preTime = System.currentTimeMillis();
-		timeTh = new TimeThread();
-		timeTh.start();
-		}
+				if(timeTh == null || !timeTh.isAlive()){
+				if(time != 0) preTime = System.currentTimeMillis() - time;
+				else preTime = System.currentTimeMillis();
+				timeTh = new TimeThread();
+				timeTh.start();
+			}
 		}
 		
 private void pause(){
@@ -164,7 +165,7 @@ private void pause(){
 
 private void stop(){
 		if(timeTh.isAlive()) {
-		timeTh.interrupt();
+			timeTh.interrupt();
 		}
 		time = 0l;
 		timeText.setText(toTime(time));
@@ -196,19 +197,20 @@ public void mouseMoved(MouseEvent e) {
 	}
 };
 
+//눌렀을 때 이벤트 
 private MyMouse myMouse = new MyMouse();
 private class MyMouse implements MouseListener{
 public void mouseEntered(MouseEvent e) {
 		Object o = e.getSource();
 		
 		if(o.equals(xBtn)){
-		xBtn.setBackground(commonColor);
+			xBtn.setBackground(commonColor);
 		}else if(o.equals(start)){
-		start.setForeground(commonColor);
+			start.setForeground(commonColor);
 		}else if(o.equals(pause)){
-		pause.setForeground(commonColor);
+			pause.setForeground(commonColor);
 		}else if(o.equals(stop)){
-		stop.setForeground(commonColor);
+			stop.setForeground(commonColor);
 		}
 	}
 
